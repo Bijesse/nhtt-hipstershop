@@ -1,14 +1,12 @@
 ---
+# Workshop - Receivers - hostmetrics <- HERE
 receivers:
-  # Workshop - Receivers - hostmetrics <- HERE
-
   otlp:
     protocols:
       grpc:
 
+# Workshop - Processors - tail based sampling <- HERE
 processors:
-  # Workshop - Processors - tail based sampling <- HERE
-
   batch:
   cumulativetodelta:
     metrics:
@@ -23,7 +21,7 @@ processors:
         from_attribute: host.name
         action: upsert
   resourcedetection:
-    detectors: [ gke, gce ]
+    detectors: [gke, gce]
   k8sattributes:
     auth_type: "serviceAccount"
     passthrough: false
@@ -51,18 +49,20 @@ exporters:
     logLevel: DEBUG
 
 service:
+  # Workshop - Receivers - hostmetrics <- HERE
   pipelines:
-    # Workshop - Receivers - hostmetrics <- HERE
     metrics:
-      receivers: [ otlp ]
-      processors: [ resourcedetection, k8sattributes, resource, cumulativetodelta, batch ]
-      exporters: [ otlp ]
-    # Workshop - Processors - tail based sampling <- HERE
+      receivers: [otlp]
+      processors:
+        [resourcedetection, k8sattributes, resource, cumulativetodelta, batch]
+      exporters: [otlp]
+
     traces:
-      receivers: [ otlp ]
-      processors: [ resourcedetection, k8sattributes, resource, batch ]
-      exporters: [ otlp ]
+      # Workshop - Processors - tail based sampling <- HERE
+      receivers: [otlp]
+      processors: [resourcedetection, k8sattributes, resource, batch]
+      exporters: [otlp]
     logs:
-      receivers: [ otlp ]
-      processors: [ resourcedetection, k8sattributes, resource, batch ]
-      exporters: [ otlp ]
+      receivers: [otlp]
+      processors: [resourcedetection, k8sattributes, resource, batch]
+      exporters: [otlp]
