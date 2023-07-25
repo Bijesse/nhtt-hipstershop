@@ -4,6 +4,7 @@ extensions:
   zpages: {}
   memory_ballast:
     size_mib: 683
+# Workshop - Receivers - hostmetrics - step 1 <- HERE
 receivers:
   otlp:
     protocols:
@@ -27,6 +28,7 @@ exporters:
     compression: gzip
 service:
   extensions: [health_check, zpages, memory_ballast]
+  # Workshop - Receivers - hostmetrics step 2 <- HERE
   pipelines:
     metrics:
       receivers: [otlp]
