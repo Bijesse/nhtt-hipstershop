@@ -1,11 +1,11 @@
 ---
-# Workshop - Receivers - hostmetrics <- HERE
+# Workshop - Receivers - hostmetrics - step 1 <- HERE
 receivers:
   otlp:
     protocols:
       grpc:
 
-# Workshop - Processors - tail based sampling <- HERE
+# Workshop - Processors - tail based sampling - step 1 <- HERE
 processors:
   batch:
   cumulativetodelta:
@@ -49,7 +49,7 @@ exporters:
     logLevel: DEBUG
 
 service:
-  # Workshop - Receivers - hostmetrics <- HERE
+  # Workshop - Receivers - hostmetrics - step 2 <- HERE
   pipelines:
     metrics:
       receivers: [otlp]
@@ -58,7 +58,7 @@ service:
       exporters: [otlp]
 
     traces:
-      # Workshop - Processors - tail based sampling <- HERE
+      # Workshop - Processors - tail based sampling - step 2 <- HERE
       receivers: [otlp]
       processors: [resourcedetection, k8sattributes, resource, batch]
       exporters: [otlp]
