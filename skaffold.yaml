@@ -24,8 +24,6 @@ build:
   # https://skaffold.dev/docs/concepts/#image-repository-handling
   - image: shippingservice
     context: src/shippingservice
-  - image: checkoutservice
-    context: src/checkoutservice
   - image: emailservice
     context: src/emailservice
     docker:
@@ -63,6 +61,7 @@ deploy:
     - ./kubernetes-manifests/shippingservice.yaml
     - ./kubernetes-manifests/adservice.yaml
     - ./kubernetes-manifests/cartservice.yaml
+    - ./kubernetes-manifests/checkoutservice.yaml
     - ./kubernetes-manifests/currencyservice.yaml
     - ./kubernetes-manifests/emailservice.yaml
     - ./kubernetes-manifests/frontend.yaml
