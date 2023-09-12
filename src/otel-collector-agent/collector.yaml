@@ -5,7 +5,7 @@ receivers:
     protocols:
       grpc:
 
-# Workshop - Processors - tail based sampling - step 1 <- HERE
+# Workshop - Processors - tail based sampling - step 3 <- HERE
 processors:
   batch:
   cumulativetodelta:
@@ -58,7 +58,7 @@ service:
       exporters: [otlp]
 
     traces:
-      # Workshop - Processors - tail based sampling - step 2 <- HERE
+      # Workshop - Processors - tail based sampling - step 4 <- HERE
       receivers: [otlp]
       processors: [resourcedetection, k8sattributes, resource, batch]
       exporters: [otlp]
