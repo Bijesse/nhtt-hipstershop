@@ -220,7 +220,8 @@ func CreateQuoteFromCount(count int) Quote {
 
 	// Workshop - Creating Nested Spans <- HERE
 
-	// Workshop - Creating Nested Spans (adding a delay) <- HERE
+	// Workshop - (adding a delay) <- HERE
+    	time.Sleep(time.Second * 1)
 
 	// Workshop - Creating Nested Spans <- HERE
 	return CreateQuoteFromFloat(float64(rand.Intn(100)))
@@ -232,8 +233,9 @@ func CreateQuoteFromFloat(value float64) Quote {
 
 	// Workshop - Creating Nested Spans <- HERE
 
-	// Workshop - Creating Nested Spans (adding a delay) <- HERE
-
+	// Workshop - (adding a delay) <- HERE
+    	time.Sleep(time.Second * 3)
+	
 	units, fraction := math.Modf(value)
 	return Quote{
 		uint32(units),
